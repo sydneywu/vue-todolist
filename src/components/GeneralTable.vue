@@ -2,7 +2,7 @@
     <div>
         <div class="block">
             <el-table
-                    :data="$store.getters.todoItems"
+                    :data="tableData"
                     style="width: 100%">
 
                     <el-table-column
@@ -54,9 +54,7 @@
 <script>
     export default {
         props: [
-            'label',
-            'inputPlaceholder',
-            'btnText'
+            'tableData'
         ],
         data(){
             return {
@@ -71,10 +69,9 @@
                 console.log(index, row)
             },
             handleCheck(index, row){
-                console.log('index', index)
-                console.log('row', row.id)
+                this.$emit('onCheck', row)
             }
-        }
+        },
     }
 </script>
 

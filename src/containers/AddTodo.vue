@@ -26,11 +26,7 @@
             InputWithButtons: InputWithButtons
         },
         methods: {
-            handleCreated() {
-                console.log('child has been created')
-            },
             createTodo(todoTitle) {
-                console.log(todoTitle)
                 let newTodoItem = createTodoItem({title: todoTitle});
                 this.$store.commit('addTodo', newTodoItem)
             }

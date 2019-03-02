@@ -2,7 +2,10 @@
     <div class="container">
         <el-row type="flex" justify="center">
             <el-col :xs="24" :sm="20" :md="18" :lg="12" :xl="8">
-                <TodoTable />
+                <GeneralTable
+                        @onCheck="onCheck"
+                        :tableData="$store.getters.todoItems"
+                />
             </el-col>
         </el-row>
 
@@ -11,7 +14,8 @@
 
 <script>
     // @ is an alias to /src
-    import TodoTable from "@/components/TodoTable.vue";
+    import GeneralTable from "@/components/GeneralTable.vue";
+    import {editTodoItem} from "@/helpers/todoHelper.js"
 
     export default {
         name: "TodoListTable",
@@ -21,15 +25,16 @@
             }
         },
         components: {
-            TodoTable
+            GeneralTable
         },
         methods: {
-            handleCreated() {
-                console.log('child has been created')
-            },
-            createTodo(todo) {
-                console.log(todo)
-                this.$store.commit('addTodo', todo)
+            onCheck(todoItem) {
+                todoItem.isCompleted = true;
+                let editedTodo = editTodoItem({
+                    ...todoItem,
+                    isCompleted: true,
+                });
+                this.$store.commit('editTodo', editedTodo)
             }
         }
 

@@ -4,7 +4,7 @@ export const createTodoItem = ({title, isCompleted}) => {
     return {
         id:null,
         title,
-        isCompleted: isCompleted || true,
+        isCompleted: isCompleted || false,
         creationTime: moment().format()
     }
 };
