@@ -13,6 +13,7 @@
 <script>
     // @ is an alias to /src
     import InputWithButtons from "@/components/InputWithButtons.vue";
+    import {createTodoItem} from "@/helpers/todoHelper.js";
 
     export default {
         name: "Addtodo",
@@ -28,8 +29,10 @@
             handleCreated() {
                 console.log('child has been created')
             },
-            createTodo(todo) {
-                console.log(todo)
+            createTodo(todoTitle) {
+                console.log(todoTitle)
+                let newTodoItem = createTodoItem({title: todoTitle});
+                this.$store.commit('addTodo', newTodoItem)
             }
         }
 
