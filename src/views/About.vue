@@ -1,5 +1,23 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+    <div class="about">
+        <AddTodo />
+    </div>
 </template>
+
+<script>
+    // @ is an alias to /src
+    import AddTodo from "@/containers/AddTodo.vue";
+
+    export default {
+        name: "About",
+        data(){
+            return {
+                todoItem: ''
+            }
+        },
+        components: {
+            AddTodo
+        },
+
+    };
+</script>

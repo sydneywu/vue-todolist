@@ -9,6 +9,10 @@
 </template>
 
 <style>
+body{
+  background-color: #f4f4f
+
+}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
