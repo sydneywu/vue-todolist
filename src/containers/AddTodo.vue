@@ -2,7 +2,7 @@
     <div class="about">
         <InputWithButtons
                 post-title="hello!"
-                label="Todo"
+                label=""
                 inputPlaceholder="Add a task"
                 btnText="Create"
                 @onClick="createTodo"

@@ -24,6 +24,14 @@ export default new Vuex.Store({
             state.todoItems = clonedTodoItems;
             localStorage.setItem('TODO_STORE', JSON.stringify(state))
         },
+        deleteTodo(state, todoItem) {
+            let clonedTodoItems = [].concat(state.todoItems);
+            let matchedIndex = clonedTodoItems.findIndex(x => x.id === todoItem.id);
+            clonedTodoItems.splice(matchedIndex,1)
+            console.log(clonedTodoItems)
+            state.todoItems = clonedTodoItems;
+            localStorage.setItem('TODO_STORE', JSON.stringify(state))
+        },
         retrieveTodoListFromStore (state, msg){
             let todoStoreString = localStorage.getItem('TODO_STORE');
             let todoStore = JSON.parse(todoStoreString);

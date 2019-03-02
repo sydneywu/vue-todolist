@@ -66,7 +66,7 @@
                 console.log(index, row)
             },
             handleDelete(index, row) {
-                console.log(index, row)
+                this.$emit('onDelete', row)
             },
             handleCheck(index, row){
                 this.$emit('onCheck', row)

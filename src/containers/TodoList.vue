@@ -4,6 +4,7 @@
             <el-col :xs="24" :sm="20" :md="18" :lg="12" :xl="8">
                 <GeneralTable
                         @onCheck="onCheck"
+                        @onDelete="onDelete"
                         :tableData="$store.getters.todoItems"
                 />
             </el-col>
@@ -21,7 +22,7 @@
         name: "TodoListTable",
         data() {
             return {
-                todoItem: ''
+                selectedTodo: ''
             }
         },
         components: {
@@ -29,12 +30,17 @@
         },
         methods: {
             onCheck(todoItem) {
-                todoItem.isCompleted = true;
                 let editedTodo = editTodoItem({
                     ...todoItem,
                     isCompleted: true,
                 });
                 this.$store.commit('editTodo', editedTodo)
+            },
+            onDelete(todoItem) {
+                this.$store.commit('deleteTodo', todoItem)
+            },
+            onEdit(todoItem){
+
             }
         }
 
