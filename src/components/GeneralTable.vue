@@ -34,15 +34,16 @@
                         <el-button
                                 size="mini"
                                 icon="el-icon-edit"
-                                @click="handleEdit(scope.$index, scope.row)">
-
-                        </el-button>
+                                @click="handleEdit(scope.$index, scope.row)"
+                                class="primary-color"
+                        ></el-button>
                         <el-button
                                 size="mini"
                                 icon="el-icon-delete"
-                                @click="handleDelete(scope.$index, scope.row)">
+                                @click="handleDelete(scope.$index, scope.row)"
+                                class="primary-color"
+                        ></el-button>
 
-                        </el-button>
                     </template>
                 </el-table-column>
 
@@ -63,12 +64,13 @@
         },
         methods: {
             handleEdit(index, row) {
-                console.log(index, row)
+                this.$emit('onEdit', row)
             },
             handleDelete(index, row) {
                 this.$emit('onDelete', row)
             },
             handleCheck(index, row){
+                console.log(row)
                 this.$emit('onCheck', row)
             }
         },

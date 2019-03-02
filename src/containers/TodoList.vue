@@ -1,12 +1,31 @@
 <template>
     <div class="container">
+        <GeneralModal>
+            <InputWithButtons
+                    label=""
+                    inputPlaceholder="Edit task"
+                    btnText="Update"
+                    @onClick="confirmEditedTitle"
+            />
+        </GeneralModal>
+
         <el-row type="flex" justify="center">
             <el-col :xs="24" :sm="20" :md="18" :lg="12" :xl="8">
-                <GeneralTable
-                        @onCheck="onCheck"
-                        @onDelete="onDelete"
-                        :tableData="$store.getters.todoItems"
-                />
+                <div class="filter">
+                    <GeneralFilter
+                            label="Filter By"
+                            :filterOptions = "filterOptions"
+                            :defaultFilter = "currentFilter"
+                            @onChange = "onFilterChange"
+                    />
+                </div>
+                <div>
+                    <GeneralTable
+                            @onCheck="onCheck"
+                            @onDelete="onDelete"
+                            :tableData="formattedTodoItems"
+                    />
+                </div>
             </el-col>
         </el-row>
 
@@ -16,34 +35,62 @@
 <script>
     // @ is an alias to /src
     import GeneralTable from "@/components/GeneralTable.vue";
-    import {editTodoItem} from "@/helpers/todoHelper.js"
+    import GeneralFilter from "@/components/GeneralFilter.vue";
+    import GeneralModal from "@/components/GeneralModal.vue";
+    import InputWithButtons from "@/components/InputWithButtons.vue";
+    import {editTodoItem, filterTodoItems} from "@/helpers/todoHelper.js"
+    import {FILTER_ALL, FILTER_ACTIVE, FILTER_COMPLETED} from "@/constants/todoFilter.js"
 
     export default {
         name: "TodoListTable",
         data() {
             return {
-                selectedTodo: ''
+                selectedTodo: '',
+                filterOptions: [FILTER_ALL, FILTER_ACTIVE, FILTER_COMPLETED],
+                currentFilter: FILTER_ALL
             }
         },
         components: {
-            GeneralTable
+            GeneralTable,
+            GeneralFilter,
+            GeneralModal,
+            InputWithButtons
+        },
+        computed: {
+            formattedTodoItems: function(){
+                return filterTodoItems({
+                    todoItems: this.$store.getters.todoItems,
+                    filter: this.currentFilter
+                })
+            }
         },
         methods: {
             onCheck(todoItem) {
+
                 let editedTodo = editTodoItem({
                     ...todoItem,
-                    isCompleted: true,
+                    isCompleted: todoItem.isCompleted,
                 });
                 this.$store.commit('editTodo', editedTodo)
+
             },
             onDelete(todoItem) {
                 this.$store.commit('deleteTodo', todoItem)
             },
             onEdit(todoItem){
-
+                console.log(todoItem)
+            },
+            onFilterChange(filterValue){
+                this.currentFilter = filterValue;
+            },
+            updated(){
+                console.log(this.$store.getters.todoItems)
+            },
+            confirmEditedTitle(title){
+                console.log(title)
             }
-        }
 
+        }
     };
 </script>
 
@@ -51,15 +98,8 @@
     .container {
 
     }
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-    a {
-        color: #42b983;
+    .filter {
+        float: right;
+        margin-bottom: 10px
     }
 </style>

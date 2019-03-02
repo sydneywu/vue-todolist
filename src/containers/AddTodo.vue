@@ -1,7 +1,6 @@
 <template>
     <div class="about">
         <InputWithButtons
-                post-title="hello!"
                 label=""
                 inputPlaceholder="Add a task"
                 btnText="Create"

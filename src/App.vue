@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Todo List</router-link>
+      <h2 class="primary-color">Simple Todo List</h2>
     </div>
     <router-view />
   </div>
@@ -9,7 +9,7 @@
 
 <style>
 body{
-  background-color: #f4f4f
+  background-color: #f4f4f4
 
 }
 #app {
@@ -18,6 +18,9 @@ body{
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.primary-color{
+  color: #409EFF
 }
 #nav {
   padding: 30px;
