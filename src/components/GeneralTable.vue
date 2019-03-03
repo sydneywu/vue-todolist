@@ -23,7 +23,7 @@
                         label="Task"
                 >
                     <template slot-scope="scope">
-                        <p :class="{strikeThrough: scope.row.isCompleted}">{{scope.row.title}} 1</p>
+                        <p :class="{strikeThrough: scope.row.isCompleted}">{{scope.row.title}}</p>
                     </template>
                 </el-table-column>
 
