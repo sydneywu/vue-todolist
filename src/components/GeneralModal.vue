@@ -1,12 +1,11 @@
 <template>
     <div class="container">
-        <el-button type="text" @click="dialogFormVisible = true">open a Form nested Dialog</el-button>
 
-        <el-dialog :visible.sync="dialogFormVisible">
+        <el-dialog :visible="modalOpen" @close="onClose">
             <slot></slot>
             <span slot="footer" class="dialog-footer">
-                <el-button @click="dialogFormVisible = false">Cancel</el-button>
-                <el-button type="primary" @click="dialogFormVisible = false">Confirm</el-button>
+                <el-button v-if="cancelBtn"  @click="dialogFormVisible = false">Cancel</el-button>
+                <el-button v-if="confirmBtn" type="primary" @click="dialogFormVisible = false">Confirm</el-button>
             </span>
         </el-dialog>
     </div>
@@ -14,39 +13,19 @@
 
 <script>
     export default {
+        props: [
+            "modalOpen",
+            "cancelBtn",
+            "confirmBtn"
+        ],
         data() {
-            return {
-                gridData: [{
-                    date: '2016-05-02',
-                    name: 'John Smith',
-                    address: 'No.1518,  Jinshajiang Road, Putuo District'
-                }, {
-                    date: '2016-05-04',
-                    name: 'John Smith',
-                    address: 'No.1518,  Jinshajiang Road, Putuo District'
-                }, {
-                    date: '2016-05-01',
-                    name: 'John Smith',
-                    address: 'No.1518,  Jinshajiang Road, Putuo District'
-                }, {
-                    date: '2016-05-03',
-                    name: 'John Smith',
-                    address: 'No.1518,  Jinshajiang Road, Putuo District'
-                }],
-                dialogTableVisible: false,
-                dialogFormVisible: false,
-                form: {
-                    name: '',
-                    region: '',
-                    date1: '',
-                    date2: '',
-                    delivery: false,
-                    type: [],
-                    resource: '',
-                    desc: ''
-                },
-                formLabelWidth: '120px'
-            };
+            return {};
+        },
+        methods:{
+            onClose(){
+                this.$emit("onCloseModal", '')
+            }
         }
+
     };
 </script>

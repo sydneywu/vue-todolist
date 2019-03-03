@@ -1,11 +1,17 @@
 <template>
     <div class="container">
-        <GeneralModal>
+        <GeneralModal
+                :modalOpen="editModalOpen"
+                @onCloseModal="onCloseEditModal"
+                :cancelBtn="false"
+                :confirmBtn="false"
+        >
             <InputWithButtons
                     label=""
                     inputPlaceholder="Edit task"
                     btnText="Update"
                     @onClick="confirmEditedTitle"
+                    :initialValue = "selectedTodo.title"
             />
         </GeneralModal>
 
@@ -23,6 +29,7 @@
                     <GeneralTable
                             @onCheck="onCheck"
                             @onDelete="onDelete"
+                            @onEdit="onEdit"
                             :tableData="formattedTodoItems"
                     />
                 </div>
@@ -45,9 +52,10 @@
         name: "TodoListTable",
         data() {
             return {
-                selectedTodo: '',
+                selectedTodo: {},
                 filterOptions: [FILTER_ALL, FILTER_ACTIVE, FILTER_COMPLETED],
-                currentFilter: FILTER_ALL
+                currentFilter: FILTER_ALL,
+                editModalOpen: false,
             }
         },
         components: {
@@ -60,7 +68,8 @@
             formattedTodoItems: function(){
                 return filterTodoItems({
                     todoItems: this.$store.getters.todoItems,
-                    filter: this.currentFilter
+                    filter: this.currentFilter,
+                    selectedTodoItem: this.selectedTodoItem
                 })
             }
         },
@@ -78,16 +87,25 @@
                 this.$store.commit('deleteTodo', todoItem)
             },
             onEdit(todoItem){
-                console.log(todoItem)
+                this.selectedTodo = todoItem;
+                this.$nextTick(function () {
+                    this.editModalOpen = true;
+                });
             },
             onFilterChange(filterValue){
                 this.currentFilter = filterValue;
-            },
-            updated(){
-                console.log(this.$store.getters.todoItems)
+                this.editModalOpen = false;
             },
             confirmEditedTitle(title){
-                console.log(title)
+                let editedTodo = editTodoItem({
+                    ...this.selectedTodo,
+                    title: title
+                });
+                this.$store.commit('editTodo', editedTodo)
+                this.editModalOpen = false;
+            },
+            onCloseEditModal(){
+                this.editModalOpen = false
             }
 
         }

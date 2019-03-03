@@ -7,7 +7,7 @@
                     v-model="inputValue"
                     class="input"
             />
-            <el-button @click="$emit('onClick', inputValue)"> {{btnText}} </el-button>
+            <el-button @click="onBtnClick"> {{btnText}} </el-button>
 
         </div>
     </div>
@@ -18,11 +18,23 @@
         props: [
             'label',
             'inputPlaceholder',
-            'btnText'
+            'btnText',
+            'initialValue'
         ],
         data(){
             return {
-                inputValue: ''
+                inputValue: this.initialValue || ""
+            }
+        },
+        watch: {
+            initialValue: function(newVal, oldVal) { // watch it
+                this.inputValue = newVal
+            }
+        },
+        methods: {
+            onBtnClick(){
+                this.$emit('onClick', this.inputValue)
+                this.inputValue = ""
             }
         }
     }
