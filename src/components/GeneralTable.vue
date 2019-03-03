@@ -20,9 +20,11 @@
                     </el-table-column>
 
                 <el-table-column
-                        prop="title"
                         label="Task"
-                        >
+                >
+                    <template slot-scope="scope">
+                        <p :class="{strikeThrough: scope.row.isCompleted}">{{scope.row.title}} 1</p>
+                    </template>
                 </el-table-column>
 
                 <el-table-column
@@ -86,5 +88,8 @@
     }
     .input {
         width: 300px
+    }
+    .strikeThrough {
+        text-decoration: line-through;
     }
 </style>
