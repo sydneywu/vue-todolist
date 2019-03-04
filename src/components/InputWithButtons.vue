@@ -1,3 +1,5 @@
+import {ElInput} from 'element-ui'
+
 <template>
     <div>
         <div class="block">
@@ -23,7 +25,7 @@
         },
         data(){
             return {
-                inputValue: this.initialValue || ""
+                inputValue: this.initialValue || "ddd"
             }
         },
         watch: {

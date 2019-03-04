@@ -72,7 +72,6 @@
                 this.$emit('onDelete', row)
             },
             handleCheck(index, row){
-                console.log(row)
                 this.$emit('onCheck', row)
             }
         },
