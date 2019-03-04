@@ -15,12 +15,12 @@
 
 <script>
     export default {
-        props: [
-            'label',
-            'inputPlaceholder',
-            'btnText',
-            'initialValue'
-        ],
+        props: {
+            label: String,
+            inputPlaceholder: String,
+            btnText: String,
+            initialValue: String
+        },
         data(){
             return {
                 inputValue: this.initialValue || ""
@@ -33,7 +33,7 @@
         },
         methods: {
             onBtnClick(){
-                this.$emit('onClick', this.inputValue)
+                this.$emit('onClick', this.inputValue);
                 this.inputValue = ""
             }
         }
