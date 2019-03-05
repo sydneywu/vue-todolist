@@ -19,7 +19,7 @@ npm run test:unit
 
 FORMAT: 1A
 
-This API demonstrates what APIs are required in order to completely integrate with the front end vue app.
+This API blueprint demonstrates what APIs are required in order to completely integrate with the front end vue app.
 
 ## POST
 This action will add one todoItem and return the updated item with an id.
