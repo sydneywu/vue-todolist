@@ -18,8 +18,9 @@
             AddTodo,
             TodoListTable,
         },
-        created: function () {
-            this.$store.commit('retrieveTodoListFromStore')
+        mounted: function () {
+            console.log('dispatch action')
+            this.$store.dispatch({type: 'fetchTodoList'})
         }
     };
 </script>

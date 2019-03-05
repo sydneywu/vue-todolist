@@ -27,7 +27,8 @@
         methods: {
             createTodo(todoTitle) {
                 let newTodoItem = createTodoItem({title: todoTitle});
-                this.$store.commit('addTodo', newTodoItem)
+                this.$store.dispatch({type: 'addTodo', todoItem: newTodoItem})
+
             }
         }
 

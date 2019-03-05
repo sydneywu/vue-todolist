@@ -80,11 +80,11 @@
                     ...todoItem,
                     isCompleted: todoItem.isCompleted,
                 });
-                this.$store.commit('editTodo', editedTodo)
+                this.$store.dispatch({type: 'editTodo', todoItem: editedTodo})
 
             },
             onDelete(todoItem) {
-                this.$store.commit('deleteTodo', todoItem)
+                this.$store.dispatch({type: 'deleteTodo', todoItem})
             },
             onEdit(todoItem){
                 this.selectedTodo = todoItem;
@@ -101,7 +101,7 @@
                     ...this.selectedTodo,
                     title: title
                 });
-                this.$store.commit('editTodo', editedTodo)
+                this.$store.dispatch({type: 'editTodo', todoItem: editedTodo})
                 this.editModalOpen = false;
             },
             onCloseEditModal(){
