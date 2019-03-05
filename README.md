@@ -30,6 +30,7 @@ This action will add one todoItem and return the updated item with an id.
         {title: 'milk the cow', isCompleted: true}
 
 + Response 200
+
         {id:1, title: 'milk the cow', isCompleted: true}
 
 ## GET
@@ -51,6 +52,7 @@ This action will update one todoItem that corresponds to the id and return the u
         {id:1, title: 'milk the cow', isCompleted: true}
 
 + Response 200
+
         {id:1, title: 'milk the cow', isCompleted: true}
 
 ## DELETE
@@ -61,4 +63,5 @@ This action will delete one todoItem that corresponds to the id and return objec
         {id:1, title: 'milk the cow', isCompleted: true}
 
 + Response 200
+
         {status: true, error: null}
