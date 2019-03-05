@@ -15,12 +15,11 @@ npm run serve
 npm run test:unit
 ```
 
-## API Blueprint
+# API Blueprint
 
 FORMAT: 1A
 
-# This is a demo API Blueprint for server requirement for this vue-todolist
-This API demonstrates what API are required in order to completely integrate with the front end vue app.
+This API demonstrates what APIs are required in order to completely integrate with the front end vue app.
 
 ## POST
 This action will add one todoItem and return the updated item with an id.
