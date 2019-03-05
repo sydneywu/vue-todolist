@@ -10,25 +10,55 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
 ### Run your unit tests
 ```
 npm run test:unit
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## API Blueprint
+
+FORMAT: 1A
+
+# This is a demo API Blueprint for server requirement for this vue-todolist
+This API demonstrates what API are required in order to completely integrate with the front end vue app.
+
+## POST
+This action will add one todoItem and return the updated item with an id.
+
++ Request (application/json)
+
+        {title: 'milk the cow', isCompleted: true}
+
++ Response 200
+        {id:1, title: 'milk the cow', isCompleted: true}
+
+## GET
+This action will get all todoItems.
+
++ Response 200 (application/json)
+
+        [
+          {id:1, title: 'milk the cow', isCompleted: false},
+          {id:2, title: 'close the freezer', isCompleted: false},
+        ]
+
+
+## PUT
+This action will update one todoItem that corresponds to the id and return the updated item.
+
++ Request (application/json)
+
+        {id:1, title: 'milk the cow', isCompleted: true}
+
++ Response 200
+        {id:1, title: 'milk the cow', isCompleted: true}
+
+## DELETE
+This action will delete one todoItem that corresponds to the id and return object with status true.
+
++ Request (application/json)
+
+        {id:1, title: 'milk the cow', isCompleted: true}
+
++ Response 200
+        {status: true, error: null}
