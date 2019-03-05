@@ -2,8 +2,6 @@ import {createTodoItem, editTodoItem, filterTodoItems} from '../todoHelper.js';
 import {FILTER_ALL, FILTER_ACTIVE, FILTER_COMPLETED} from '../../constants/todoFilter.js'
 
 describe('DomainAuth __tests__', function() {
-    let newUser;
-
     beforeEach(function(done) {
         done();
     });

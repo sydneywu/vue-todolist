@@ -25,7 +25,7 @@ import {ElInput} from 'element-ui'
         },
         data(){
             return {
-                inputValue: this.initialValue || "ddd"
+                inputValue: this.initialValue || ""
             }
         },
         watch: {

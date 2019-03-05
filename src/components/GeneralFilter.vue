@@ -26,22 +26,7 @@
             'label',
             'filterOptions',
             'defaultFilter',
-        ],
-        data() {
-            return {
-                options: [{
-                    value: 'all',
-                    label: 'all'
-                }, {
-                    value: 'active',
-                    label: 'active'
-                }, {
-                    value: 'completed',
-                    label: 'completed'
-                }],
-                value: 'all'
-            }
-        }
+        ]
     }
 </script>
 
